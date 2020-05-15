@@ -1,8 +1,8 @@
 import pgzrun
 from random import randint
 
-WIDTH = 400
-HEIGHT = 400
+WIDTH = 600
+HEIGHT = 600
 summa = 0
 spelet_slut = False
 
@@ -58,7 +58,21 @@ def move_mynt():
         if mynt.y < max_y:
             mynt.y = mynt.y + 1
         else:
-            current_direction = get_new_direction()            
+            current_direction = get_new_direction()         
+
+def move_fox(): 
+    if keyboard.W:
+        if rav.y > min_y:
+            rav.y = rav.y - 2
+    elif keyboard.S:
+        if rav.y < max_y:
+            rav.y = rav.y + 2 
+    elif keyboard.A:
+        if rav.x > min_x:
+            rav.x = rav.x - 2
+    elif keyboard.D:
+        if rav.x < max_x:
+            rav.x = rav.x + 2                
 
 
 def draw():
@@ -74,22 +88,9 @@ def on_key_down(key):
 
 
 def update():
-
     move_mynt()
-
-    
-    if keyboard.W:
-        if rav.y > min_y:
-            rav.y = rav.y - 2
-    elif keyboard.S:
-        if rav.y < max_y:
-            rav.y = rav.y + 2 
-    elif keyboard.A:
-        if rav.x > min_x:
-            rav.x = rav.x - 2
-    elif keyboard.D:
-        if rav.x < max_x:
-            rav.x = rav.x + 2 
+    move_fox()
+ 
 
    
     
