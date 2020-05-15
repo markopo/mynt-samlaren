@@ -19,11 +19,46 @@ rav.pos = 100, 100
 mynt = Actor("coin")
 mynt.pos = 20, 300
 
+directions = [ "up", "down", "left", "right" ]
+current_direction = "right"
+
 
 
 def tiden_slut():
     print("tiden slut")
     spelet_slut = True
+
+
+def get_new_direction():
+    index = randint(0, len(directions)-1)
+    return directions[index]
+
+
+def move_mynt():
+    global current_direction
+
+    if current_direction == "right":
+        if mynt.x < max_x:
+            mynt.x = mynt.x + 1
+        else:
+            current_direction = get_new_direction()    
+    elif current_direction == "left":
+        if mynt.x > min_x:
+            mynt.x = mynt.x - 1
+        else:
+            current_direction = get_new_direction()
+        
+    elif current_direction == "up":
+        if mynt.y > min_y:
+            mynt.y = mynt.y -1 
+        else:
+            current_direction = get_new_direction()
+
+    elif current_direction == "down":
+        if mynt.y < max_y:
+            mynt.y = mynt.y + 1
+        else:
+            current_direction = get_new_direction()            
 
 
 def draw():
@@ -40,8 +75,7 @@ def on_key_down(key):
 
 def update():
 
-    if mynt.x < max_x:
-            mynt.x = mynt.x + 1
+    move_mynt()
 
     
     if keyboard.W:
