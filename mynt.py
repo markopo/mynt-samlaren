@@ -43,8 +43,8 @@ def move_mynt():
 
     speed = 1
 
-    if summa > 10:
-        speed = summa / 10
+   # if summa > 10:
+     #   speed = summa / 10
 
     if current_direction == "right":
         if mynt.x < max_x:
@@ -107,6 +107,9 @@ def draw():
     rav.draw()
     mynt.draw()
     screen.draw.text("Summa: " + str(summa), color="black", topleft=(10,10))
+
+    if spelet_slut:
+         screen.draw.text("YOU WIN!!!!!!!!!!! GAME OVER", color="purple", topleft=(100,100))
 
 def on_key_down(key):
     # print(key)
